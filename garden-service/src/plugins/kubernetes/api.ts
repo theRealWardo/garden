@@ -9,13 +9,13 @@
 import { resolve } from "url"
 import {
   KubeConfig,
-  Core_v1Api,
-  Extensions_v1beta1Api,
-  RbacAuthorization_v1Api,
-  Apps_v1Api,
-  Apiextensions_v1beta1Api,
+  CoreV1Api,
+  ExtensionsV1beta1Api,
+  RbacAuthorizationV1Api,
+  AppsV1Api,
+  ApiextensionsV1beta1Api,
   V1Secret,
-  Policy_v1beta1Api,
+  PolicyV1beta1Api,
   CoreApi,
   ApisApi,
   V1APIGroup,
@@ -60,23 +60,23 @@ const apiInfoLock = new AsyncLock()
 
 // NOTE: be warned, the API of the client library is very likely to change
 
-type K8sApi = Core_v1Api
-  | Extensions_v1beta1Api
-  | RbacAuthorization_v1Api
-  | Apps_v1Api
-  | Apiextensions_v1beta1Api
-  | Policy_v1beta1Api
+type K8sApi = CoreV1Api
+  | ExtensionsV1beta1Api
+  | RbacAuthorizationV1Api
+  | AppsV1Api
+  | ApiextensionsV1beta1Api
+  | PolicyV1beta1Api
 type K8sApiConstructor<T extends K8sApi> = new (basePath?: string) => T
 
 const apiTypes: { [key: string]: K8sApiConstructor<any> } = {
-  apiExtensions: Apiextensions_v1beta1Api,
+  apiExtensions: ApiextensionsV1beta1Api,
   apis: ApisApi,
-  apps: Apps_v1Api,
-  core: Core_v1Api,
+  apps: AppsV1Api,
+  core: CoreV1Api,
   coreApi: CoreApi,
-  extensions: Extensions_v1beta1Api,
-  policy: Policy_v1beta1Api,
-  rbac: RbacAuthorization_v1Api,
+  extensions: ExtensionsV1beta1Api,
+  policy: PolicyV1beta1Api,
+  rbac: RbacAuthorizationV1Api,
 }
 
 const crudMap = {
@@ -100,14 +100,14 @@ export class KubernetesError extends GardenBaseError {
 }
 
 export class KubeApi {
-  public apiExtensions: Apiextensions_v1beta1Api
+  public apiExtensions: ApiextensionsV1beta1Api
   public apis: ApisApi
-  public apps: Apps_v1Api
-  public core: Core_v1Api
+  public apps: AppsV1Api
+  public core: CoreV1Api
   public coreApi: CoreApi
-  public extensions: Extensions_v1beta1Api
-  public policy: Policy_v1beta1Api
-  public rbac: RbacAuthorization_v1Api
+  public extensions: ExtensionsV1beta1Api
+  public policy: PolicyV1beta1Api
+  public rbac: RbacAuthorizationV1Api
 
   constructor(public context: string, private config: KubeConfig) {
     const cluster = this.config.getCurrentCluster()

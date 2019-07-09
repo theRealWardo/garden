@@ -2,11 +2,11 @@
 
 Garden includes a `container` module type, which provides a high-level abstraction around container-based services, that's easy to understand and use.
 
-Even though we've spent the most time on supporting Kubernetes, we've tried to design this module type in a way that makes it generically applicable to other container orchestrators as well, such as Docker Swarm, Docker Compose, AWS ECS etc. This will come in handy as we add more providers, that can then use the same module type.
-
 `container` modules can be used to just _build_ container images, or they can specify deployable services through the optional `services` key, as well as `tasks` and `tests`. So you might in one scenario use a `container` module to both build and deploy services, and in another you might only build the image using a `container` module, and then refer to that image in a `helm` or `kubernetes` module.
 
 Below we'll walk through some usage examples. For a full reference of the `container` module type, please take a look at the [reference](../reference/module-types/container.md).
+
+_Note: Even though we've spent the most time on supporting Kubernetes, we've tried to design this module type in a way that makes it generically applicable to other container orchestrators as well, such as Docker Swarm, Docker Compose, AWS ECS etc. This will come in handy as we add more providers, that can then use the same module type._
 
 ## Building images
 
@@ -55,7 +55,7 @@ If you specify a tag as well, for example `image: my-org/my-container:v1.2.3`, t
 
 `container` modules also have an optional `services` field, which you can use to deploy the container image using your configured providers (such as `kubernetes`/`local-kubernetes`).
 
-In the case of Kubernetes, Garden will take the simplified `container` service specification and convert to the corresponding Kubernetes manifests, i.e. Deployment, Service and (if applicable) Ingress resources.
+In the case of Kubernetes, Garden will take the simplified `container` service specification and convert it to the corresponding Kubernetes manifests, i.e. Deployment, Service and (if applicable) Ingress resources.
 
 Here, for example, is the spec for the `frontend` service in our example [demo project](https://github.com/garden-io/garden/tree/master/examples/demo-project):
 
@@ -179,7 +179,7 @@ kind: Module
 type: container
 name: my-container
 ...
-tests:
+tasks:
   - name: db-migrate
     command: [rake, db:migrate]
     dependencies:

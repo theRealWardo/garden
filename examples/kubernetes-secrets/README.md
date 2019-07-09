@@ -17,7 +17,7 @@ garden init
 ### 2. Create the Secret
 
 ```sh
-kubectl --namespace=kubernetes-secret create secret generic my-secret --from-literal=my-key=superdupersecret
+kubectl --namespace=kubernetes-secrets create secret generic my-secret --from-literal=my-key=superdupersecret
 ```
 
 ## Usage

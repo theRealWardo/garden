@@ -169,10 +169,10 @@ export const containerEnvVarsSchema = joi.object()
     "Key/value map of environment variables. Keys must be valid POSIX environment variable names " +
     "(must not start with `GARDEN`) and values must be primitives or references to secrets.",
   )
-  .example({
+  .example([{
     MY_VAR: "some-value",
     MY_SECRET_VAR: { secretRef: { name: "my-secret", key: "some-key" } },
-  })
+  }, {}])
 
 const ingressSchema = joi.object()
   .keys({

@@ -1,5 +1,5 @@
 kind: Project
-name: demo-project
+name: kubernetes-secrets
 environments:
   - name: local
     providers:

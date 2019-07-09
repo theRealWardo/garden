@@ -338,8 +338,7 @@ build:
       copy:
         - source:
           target: <same as source path>
-  command:
-    []
+  command: []
 env: {}
 tasks:
   - name:

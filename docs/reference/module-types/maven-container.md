@@ -438,7 +438,12 @@ Example:
 
 ```yaml
 services:
-  - env:   MY_VAR: some-value,  MY_SECRET_VAR:,    secretRef:,      name: my-secret,      key: some-key
+  - env:
+      MY_VAR: some-value
+      MY_SECRET_VAR:
+        secretRef:
+          name: my-secret
+          key: some-key
 ```
 
 ### `services[].healthCheck`
@@ -803,7 +808,12 @@ Example:
 
 ```yaml
 tests:
-  - env:   MY_VAR: some-value,  MY_SECRET_VAR:,    secretRef:,      name: my-secret,      key: some-key
+  - env:
+      MY_VAR: some-value
+      MY_SECRET_VAR:
+        secretRef:
+          name: my-secret
+          key: some-key
 ```
 
 ### `tasks`
@@ -906,7 +916,12 @@ Example:
 
 ```yaml
 tasks:
-  - env:   MY_VAR: some-value,  MY_SECRET_VAR:,    secretRef:,      name: my-secret,      key: some-key
+  - env:
+      MY_VAR: some-value
+      MY_SECRET_VAR:
+        secretRef:
+          name: my-secret
+          key: some-key
 ```
 
 ### `jarPath`

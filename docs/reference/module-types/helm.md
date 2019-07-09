@@ -471,7 +471,12 @@ Example:
 
 ```yaml
 tasks:
-  - env:   MY_VAR: some-value,  MY_SECRET_VAR:,    secretRef:,      name: my-secret,      key: some-key
+  - env:
+      MY_VAR: some-value
+      MY_SECRET_VAR:
+        secretRef:
+          name: my-secret
+          key: some-key
 ```
 
 ### `tests`
@@ -619,7 +624,12 @@ Example:
 
 ```yaml
 tests:
-  - env:   MY_VAR: some-value,  MY_SECRET_VAR:,    secretRef:,      name: my-secret,      key: some-key
+  - env:
+      MY_VAR: some-value
+      MY_SECRET_VAR:
+        secretRef:
+          name: my-secret
+          key: some-key
 ```
 
 ### `version`
